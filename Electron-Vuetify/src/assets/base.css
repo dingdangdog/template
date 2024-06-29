@@ -1,0 +1,25 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* 覆盖html滚动轴，否则会出现纵向滚动条 */
+  overflow-y: auto !important;
+  margin: 0;
+  padding: 0;
+}
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}

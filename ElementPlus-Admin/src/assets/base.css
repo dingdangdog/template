@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --i-header-height: 4rem;
+}
+
+/* Webkit浏览器样式 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 2px;
+}
+
+@media screen and (max-width: 1280px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--el-color-primary-light-3);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--el-color-primary-light-7);
+  border-radius: 5px;
+}
