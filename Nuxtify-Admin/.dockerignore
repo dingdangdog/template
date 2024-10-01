@@ -1,0 +1,7 @@
+.data
+.nuxt
+.output
+node_modules
+dist
+.env
+bilibili-scraper

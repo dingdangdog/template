@@ -1,0 +1,12 @@
+services:
+  template:
+    container_name: template
+    image: dingdangdog/template:1.0.0
+    restart: always
+    ports:
+      - 9981:9981
+    volumes:
+      - ./data:/app/.data
+    environment:
+      - NUXT_API_SECRET=template@oldmoon.top
+      - NUXT_DOMAIN=template.oldmoon.top

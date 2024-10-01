@@ -1,0 +1,21 @@
+.admin-main {
+  height: 100vh;
+}
+
+.admin-table-container {
+  max-height: 100vh;
+}
+
+.admin-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 0 1rem;
+}
+
+.table-search {
+  width: 100%;
+  min-width: 10rem;
+  max-width: 20rem;
+  margin: 0.5rem 0;
+}
