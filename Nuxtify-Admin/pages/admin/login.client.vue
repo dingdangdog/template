@@ -91,7 +91,7 @@ const onSubmit = () => {
         // console.log(res)
         successAlert("Login success");
         loading.value = false;
-        navigateTo({ path: "/admin/" });
+        navigateTo({ path: "/admin/dashboard" });
       } else {
         errorAlert("Password Error");
       }

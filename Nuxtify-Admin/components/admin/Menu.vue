@@ -61,7 +61,7 @@ type Menu = {
 const openMenu = ref<string>("/home");
 
 const items = ref<Menu[]>([
-  { title: "看板", path: "", icon: "mdi-home-analytics" },
+  { title: "看板", path: "dashboard", icon: "mdi-home-analytics" },
   { title: "主站", path: "home", icon: "mdi-home-circle" },
   { title: "字典管理", path: "dict", icon: "mdi-code-tags" },
   {
