@@ -1,14 +1,14 @@
 <template>
-  <footer>
-    {{ new Date().getFullYear() }} —
-    <strong><a href="https://www.aitlog.com">aitlog.com</a></strong>
+  <footer class="min-h-16 bg-gray-950 flex items-center justify-center">
+    <strong
+      >Power By
+      <a href="https://github.com/dingdangdog" class="underline"
+        >dingdangdog</a
+      ></strong
+    >
   </footer>
 </template>
 
-<script setup lang='ts'>
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

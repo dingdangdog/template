@@ -14,7 +14,7 @@ export default defineNuxtConfig({
       apiBase: '/api'
     }
   },
-  modules: ["@nuxtjs/i18n"],
+  modules: ["@nuxtjs/i18n", '@nuxtjs/tailwindcss'],
   // imports: {
   //   autoImport: true,
   // },
