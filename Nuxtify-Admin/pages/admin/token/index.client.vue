@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: "admin",
+  middleware: ["admin-auth"],
 });
 
 import { successAlert } from "~/utils/alert";

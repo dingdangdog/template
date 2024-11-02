@@ -21,6 +21,18 @@ export default defineNuxtConfig({
       authKey: "Authorization",
     },
   },
+  echarts: {
+    features: ["LabelLayout", "UniversalTransition"],
+    charts: ["BarChart", "LineChart", "PieChart"],
+    components: [
+      "DatasetComponent",
+      "GridComponent",
+      "TooltipComponent",
+      "LegendComponent",
+      "ToolboxComponent",
+      "DataZoomComponent",
+    ],
+  },
   devServer: {
     port: 30000,
   },
@@ -29,7 +41,12 @@ export default defineNuxtConfig({
       database: true,
     },
   },
-  modules: ["@nuxtjs/i18n", "vuetify-nuxt-module", "@nuxtjs/tailwindcss"],
+  modules: [
+    "@nuxtjs/i18n",
+    "vuetify-nuxt-module",
+    "@nuxtjs/tailwindcss",
+    "nuxt-echarts",
+  ],
   i18n: {
     // strategy: "prefix_except_default",
     strategy: "no_prefix",
