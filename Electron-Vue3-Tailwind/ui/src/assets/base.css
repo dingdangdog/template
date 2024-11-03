@@ -1,0 +1,29 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  color: rgb(243 244 246);
+}
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgb(3 7 18);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(107 114 128);
+}
+
+.drag-area {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}

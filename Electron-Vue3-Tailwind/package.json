@@ -1,0 +1,56 @@
+{
+  "name": "dotts",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "main": "main.js",
+  "author": {
+    "name": "dingdangdog",
+    "email": "dingdangdogx@outlook.com"
+  },
+  "scripts": {
+    "electron": "electron .",
+    "package": "electron-builder"
+  },
+  "build": {
+    "appId": "top.oldmoon.dotts",
+    "productName": "DoTTS",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "handler.js",
+      "server/**",
+      "ui/dist/**"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "ui/public/favicon.ico"
+    }
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "electron": "^24.8.8",
+    "electron-builder": "^23.6.0"
+  }
+}
