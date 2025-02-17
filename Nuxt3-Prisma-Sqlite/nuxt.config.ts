@@ -1,11 +1,16 @@
+import { transformAssetUrls } from "vite-plugin-vuetify";
+
 export default defineNuxtConfig({
-  compatibilityDate: "2024-04-03",
+  compatibilityDate: "2025-01-01",
   ssr: true,
   devtools: { enabled: true },
   css: ["~/assets/css/base.css"],
   runtimeConfig: {
     public: {},
+    adminUsername: "",
+    adminPassword: "",
   },
+
   devServer: {
     port: 12345,
   },
@@ -14,7 +19,12 @@ export default defineNuxtConfig({
     //   "/api/**": { swr: true },
     // },
   },
-  modules: ["@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@prisma/nuxt"],
+  modules: [
+    "@nuxtjs/i18n",
+    "vuetify-nuxt-module",
+    "@nuxtjs/tailwindcss",
+    "@prisma/nuxt",
+  ],
 
   i18n: {
     strategy: "prefix_except_default",
@@ -36,9 +46,16 @@ export default defineNuxtConfig({
       redirectOn: "root",
     },
   },
+  tailwindcss: {
+    config: {
+      prefix: "tw-",
+    },
+  },
   vite: {
     vue: {
-      template: {},
+      template: {
+        transformAssetUrls,
+      },
     },
   },
 });

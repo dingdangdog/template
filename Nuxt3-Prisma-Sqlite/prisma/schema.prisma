@@ -29,3 +29,13 @@ model User {
   email    String?  @unique
   createBy DateTime @default(now())
 }
+
+model Resource {
+  id       Int      @id @default(autoincrement())
+  name     String
+  info     String
+  link     String
+  desc     String
+  createBy DateTime @default(now())
+  updateBy DateTime @default(now())
+}
