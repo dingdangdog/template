@@ -1,5 +1,3 @@
-import { transformAssetUrls } from "vite-plugin-vuetify";
-
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   ssr: true,
@@ -16,11 +14,7 @@ export default defineNuxtConfig({
     //   "/api/**": { swr: true },
     // },
   },
-  modules: [
-    "@nuxtjs/i18n",
-    "@nuxtjs/tailwindcss",
-    "@prisma/nuxt",
-  ],
+  modules: ["@nuxtjs/i18n", "@nuxtjs/tailwindcss", "@prisma/nuxt"],
 
   i18n: {
     strategy: "prefix_except_default",
@@ -44,9 +38,7 @@ export default defineNuxtConfig({
   },
   vite: {
     vue: {
-      template: {
-        transformAssetUrls,
-      },
+      template: {},
     },
   },
 });
