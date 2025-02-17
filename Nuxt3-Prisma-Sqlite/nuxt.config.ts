@@ -1,19 +1,13 @@
 import { transformAssetUrls } from "vite-plugin-vuetify";
 
 export default defineNuxtConfig({
-  compatibilityDate: "2025-01-01",
+  compatibilityDate: "2024-04-03",
   ssr: true,
   devtools: { enabled: true },
   css: ["~/assets/css/base.css"],
   runtimeConfig: {
     public: {},
-    authSecret: "",
-    authOrigin: "", // 即 NUXT_AUTH_ORIGIN，权限框架使用
-    adminSecret: "",
-    adminUsername: "",
-    adminPassword: "",
   },
-
   devServer: {
     port: 12345,
   },
@@ -24,29 +18,10 @@ export default defineNuxtConfig({
   },
   modules: [
     "@nuxtjs/i18n",
-    "vuetify-nuxt-module",
     "@nuxtjs/tailwindcss",
-    "nuxt-echarts",
-    "@sidebase/nuxt-auth",
     "@prisma/nuxt",
   ],
 
-  auth: {
-    // 重要提示：请修改 baseURL 值为你的正式服务地址
-    baseURL:
-      process.env.NUXT_AUTH_ORIGIN || "https://mynuxt.oldmoon.top/api/auth",
-    // globalAppMiddleware: false,
-    // originEnvKey: "NUXT_AUTH_ORIGIN",
-    provider: {
-      type: "authjs",
-      trustHost: false,
-      addDefaultCallbackUrl: true,
-    },
-    sessionRefresh: {
-      enablePeriodically: false,
-      enableOnWindowFocus: true,
-    },
-  },
   i18n: {
     strategy: "prefix_except_default",
     defaultLocale: "zh",
@@ -65,35 +40,6 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: "i18n_redirected",
       redirectOn: "root",
-    },
-  },
-  // 动态引入echars图表
-  echarts: {
-    features: ["LabelLayout", "UniversalTransition"],
-    charts: ["BarChart", "LineChart", "PieChart"],
-    components: [
-      "DatasetComponent",
-      "GridComponent",
-      "TooltipComponent",
-      "LegendComponent",
-      "ToolboxComponent",
-      "DataZoomComponent",
-    ],
-  },
-  tailwindcss: {
-    config: {
-      prefix: "tw-",
-    },
-  },
-  vuetify: {
-    moduleOptions: {
-      ssrClientHints: {},
-    },
-    vuetifyOptions: {
-      theme: {
-        defaultTheme: "dark",
-        themes: {},
-      },
     },
   },
   vite: {
