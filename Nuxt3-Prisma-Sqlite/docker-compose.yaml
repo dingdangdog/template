@@ -1,0 +1,45 @@
+# Use postgres/example user/password credentials
+version: "3.9"
+
+services:
+  main:
+    container_name: mynuxt
+    depends_on: "db"
+    image: mynuxt:0.0.1
+    restart: always
+    network_mode: "host"
+    environment:
+      DATABASE_URL: "postgresql://postgres:123456@localhost:5432/mynuxt?schema=sample"
+    #ports:
+    #  - 3000:3000
+  db:
+    container_name: mynuxt_db
+    image: postgres
+    restart: always
+    #network_mode: "host"
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mb
+    environment:
+      #POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - 5432:5432
+
+  #redis:
+  # container name
+  #container_name: redis
+  #image: redis:6.2.6-alpine
+  #ports: # 바인딩할 포트:내부 포트
+  #  - 6379:6379
+  #command: redis-server /usr/local/etc/redis/redis.conf
+  #volumes: # 마운트할 볼륨 설정
+  #  - ./data:/data
+  #  - ./redis.conf:/usr/local/etc/redis/redis.conf
+  #restart: always
