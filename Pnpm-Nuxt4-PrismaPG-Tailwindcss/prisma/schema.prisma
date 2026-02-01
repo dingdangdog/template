@@ -1,0 +1,10 @@
+// Prisma Schema for PostgreSQL matching database-schema.md
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
