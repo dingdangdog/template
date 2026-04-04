@@ -8,3 +8,19 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Theme {
+  id          String   @id @default(cuid()) @db.VarChar(36)
+  name        String   @unique @db.VarChar(50)
+  displayName String   @db.VarChar(100)
+  mode        String   @db.VarChar(20) // 'light' or 'dark'
+  colors      String   @db.Text // JSON 格式存储色彩配置
+  isActive    Boolean  @default(true)
+  isDefault   Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([mode, isActive])
+  @@map("themes")
+}
