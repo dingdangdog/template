@@ -1,0 +1,18 @@
+services:
+  # Nuxt 应用服务
+  app:
+    container_name: loden
+    restart: unless-stopped
+    ports:
+      - 7061:7061
+    environment:
+      TZ: Asia/Shanghai
+      # 数据库配置
+      DATABASE_MODE: ${DATABASE_MODE:-postgre}
+      DATABASE_URL: "postgresql://postgres:123456@localhost:5432/loden?schema=public"
+      # Nuxt 配置
+      PORT: 7061
+      NODE_ENV: production
+
+  volumes:
+    - ./resources:/app/resources

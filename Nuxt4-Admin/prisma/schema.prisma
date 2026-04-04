@@ -1,0 +1,85 @@
+// Prisma Schema for PostgreSQL matching database-schema.md
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// 用户表
+/// 用户表
+model User {
+  id          String    @id @default(cuid()) @db.VarChar(36) /// 主键
+  username    String    @db.VarChar(50) /// 登录用户名
+  password    String    @db.VarChar(255) /// 密码（存储加密后的值，建议 255 以兼容多种算法）
+  name        String    @default("User") @db.VarChar(100) /// 显示名称/昵称
+  email       String?   @db.VarChar(255) /// 邮箱
+  roles       String?   @db.VarChar(50) /// 角色 admin:管理员, user:普通用户（多角色逗号分隔）
+  createAt    DateTime  @default(now()) /// 创建时间
+  updateAt    DateTime  @updatedAt /// 更新时间
+  lastLoginAt DateTime? /// 最后登录时间
+  lightTheme  String?   @db.VarChar(50) /// 浅色主题编号
+  darkTheme   String?   @db.VarChar(50) /// 深色主题编号
+
+  @@map("users")
+}
+
+/// 主题表
+model Theme {
+  id          String   @id @default(cuid()) @db.VarChar(36)
+  name        String   @unique @db.VarChar(50)
+  displayName String   @db.VarChar(100)
+  mode        String   @db.VarChar(20) // 'light' or 'dark'
+  colors      String   @db.Text // JSON 格式存储色彩配置
+  isActive    Boolean  @default(true)
+  isDefault   Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([mode, isActive])
+  @@map("system_themes")
+}
+
+/// AI 服务商配置表
+model AIProvider {
+  id          String   @id @default(cuid()) @db.VarChar(36) /// 主键
+  name        String   @db.VarChar(100) /// 显示名称，如 "OpenAI GPT-4"、"DeepL Pro"
+  provider    String   @db.VarChar(50) /// 服务商标识，如 "openai", "deepseek", "gemini"
+  apiProtocol String   @db.VarChar(50) /// API 协议，如 "openai", "gemini", "claude"
+  apiKey      String?  @db.VarChar(500) /// API 密钥
+  apiEndpoint String?  @db.VarChar(500) /// API 端点（可选，某些服务商需自定义端点）
+  apiModel    String?  @db.VarChar(100) /// 模型编号，如 "gpt-4", "gemini-2.0-flash"
+  apiVersion  String?  @db.VarChar(100) /// API 版本，如 "2024-02-15"
+  temperature Float?   @default(0.3) /// 温度参数，如 0.3, 0.5, 1.0, 2.0
+  maxTokens   Int?     @default(3000) /// 最大令牌数，如 1000, 3000
+  timeout     Int      @default(30000) /// 超时时间（毫秒），默认 30 秒
+  extraConfig String?  @db.Text /// 额外配置（JSON 格式），服务商特定配置
+  isActive    Boolean  @default(true) /// 是否启用
+  createdAt   DateTime @default(now()) /// 创建时间
+  updatedAt   DateTime @updatedAt /// 更新时间
+
+  @@index([provider, isActive])
+  @@index([isActive])
+  @@map("system_ai_providers")
+}
+
+// 系统配置字典表 - 用于存储系统级配置（key-value 形式）- 灵活设计，随时增加不同字典、配置
+// 支持存储各种配置，如 R2、Google 广告、Google 分析、OAuth 等
+model Config {
+  id          String   @id @default(cuid()) @db.VarChar(36)
+  key         String   @unique @db.VarChar(100) // 配置键（约定式，代码中定义枚举）
+  value       String?  @db.Text // 配置值（可为空，表示未配置）
+  description String?  @db.VarChar(500) // 配置说明
+  category    String?  @db.VarChar(50) // 配置分类（如 "r2", "google", "oauth" 等）
+  isEncrypted Boolean  @default(false) // 是否加密存储（敏感信息如密钥等）
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([key])
+  @@index([category])
+  @@map("system_configs")
+}
