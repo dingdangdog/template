@@ -17,4 +17,24 @@ import * as Prisma from './internal/prismaNamespaceBrowser.js'
 export { Prisma }
 export * as $Enums from './enums.js'
 export * from './enums.js';
-
+/**
+ * Model User
+ * 用户表
+ * 用户表
+ */
+export type User = Prisma.UserModel
+/**
+ * Model Theme
+ * 主题表
+ */
+export type Theme = Prisma.ThemeModel
+/**
+ * Model AIProvider
+ * AI 服务商配置表
+ */
+export type AIProvider = Prisma.AIProviderModel
+/**
+ * Model Config
+ * 
+ */
+export type Config = Prisma.ConfigModel

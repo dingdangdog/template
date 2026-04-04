@@ -51,7 +51,10 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-
+  User: 'User',
+  Theme: 'Theme',
+  AIProvider: 'AIProvider',
+  Config: 'Config'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -68,4 +71,96 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const UserScalarFieldEnum = {
+  id: 'id',
+  username: 'username',
+  password: 'password',
+  name: 'name',
+  email: 'email',
+  roles: 'roles',
+  createAt: 'createAt',
+  updateAt: 'updateAt',
+  lastLoginAt: 'lastLoginAt',
+  lightTheme: 'lightTheme',
+  darkTheme: 'darkTheme'
+} as const
+
+export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const ThemeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  displayName: 'displayName',
+  mode: 'mode',
+  colors: 'colors',
+  isActive: 'isActive',
+  isDefault: 'isDefault',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ThemeScalarFieldEnum = (typeof ThemeScalarFieldEnum)[keyof typeof ThemeScalarFieldEnum]
+
+
+export const AIProviderScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  provider: 'provider',
+  apiProtocol: 'apiProtocol',
+  apiKey: 'apiKey',
+  apiEndpoint: 'apiEndpoint',
+  apiModel: 'apiModel',
+  apiVersion: 'apiVersion',
+  temperature: 'temperature',
+  maxTokens: 'maxTokens',
+  timeout: 'timeout',
+  extraConfig: 'extraConfig',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AIProviderScalarFieldEnum = (typeof AIProviderScalarFieldEnum)[keyof typeof AIProviderScalarFieldEnum]
+
+
+export const ConfigScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  value: 'value',
+  description: 'description',
+  category: 'category',
+  isEncrypted: 'isEncrypted',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ConfigScalarFieldEnum = (typeof ConfigScalarFieldEnum)[keyof typeof ConfigScalarFieldEnum]
+
+
+export const SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+} as const
+
+export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

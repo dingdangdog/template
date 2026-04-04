@@ -8,4 +8,8 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/User.js'
+export type * from './models/Theme.js'
+export type * from './models/AIProvider.js'
+export type * from './models/Config.js'
 export type * from './commonInputTypes.js'
